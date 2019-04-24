@@ -25,7 +25,7 @@ the easiest tool to use is `wget`.
 The syntax is relatively straightforward: `wget https://some/link/to/a/file.tar.gz`
 
 ```
-[remote]$ wget https://epcced.github.io/hpc-intro/files/cfd.tar.gz
+[remote]$ wget https://mesfind.github.io/hpc/files/cfd.tar.gz
 ```
 {: .bash}
 ```
@@ -85,7 +85,7 @@ Or perhaps we're simply not sure which files we want to tranfer yet.
 Let's connect to a remote system using `sftp`, you'll notice it works the same way as SSH:
 
 ```
-[local]$ sftp yourUsername@login.cirrus.ac.uk
+[local]$ sftp yourUsername@10.4.17.30
 ```
 {: .bash}
 
@@ -238,7 +238,7 @@ When you connect to the cluster, your cluster files will appear on the right han
 To connect to the cluster, 
 we'll just need to enter our credentials at the top of the screen:
 
-* Host: `sftp://login.cirrus.ac.uk`
+* Host: `sftp://10.4.17.30
 * User: Your username
 * Password: Your password
 * Port: (leave blank to use the default port)
