@@ -108,7 +108,7 @@ The general syntax of the connection command follows the format `ssh yourUsernam
 Let's attempt to connect to the HPC system now:
 
 ```
-ssh yourUsername@login.cirrus.ac.uk
+ssh yourUsername@10.4.17.30
 ```
 {: .bash}
 
@@ -124,19 +124,7 @@ yourUsername@login.cirrus.ac.uk password:  # no text appears as you enter your p
 Last login: Mon Jun 18 16:21:52 2018 from cpc102380-sgyl38-2-0-cust601.18-2.cable.virginm.net
 ================================================================================
 
-Cirrus HPC Service
 
---------------------------------------------------------------------------------
-This is a private computing facility. Access to this system is limited to those
-who have been granted access by the operating service provider on behalf of the
-issuing authority and use is restricted to the purposes for which access was
-granted. All access and usage are governed by the terms and conditions of access
-agreed to by all registered users and are thus subject to the provisions of the
-Computer Misuse Act, 1990 under which unauthorised use is a criminal offence.
---------------------------------------------------------------------------------
-
-For help please contact the Cirrus helpdesk at: 
-support@cirrus.ac.uk
 
 ================================================================================
 ```
@@ -148,7 +136,7 @@ in this case `[yourUsername@computerName workingDirectory]$`.
 We will cover things in depth as we explore the system further.)
 
 ```{.output}
-[yourUsername@cirrus-login0 ~]$
+[yourUsername@Ntoto ~]$
 ```
 
 ## Telling the Difference between the Local Terminal and the Remote Terminal
