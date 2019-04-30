@@ -99,8 +99,8 @@ For those logging in with PuTTY it would likely be best to cover the terminal ba
 
 With all of this in mind, let's connect to a cluster. 
 
-For this lesson, we will use [Cirrus](http://www.cirrus.ac.uk) - an HPC system located at [EPCC](http://www.epcc.ed.ac.uk).
-Although it's unlikely that every system will be exactly like Cirrus, it's a good example of what you can expect from an HPC system.
+For this lesson, we will use [Entoto]() - an HPC system located at [Department of Chemistry](http://www.aau.edu.et).
+Although it's unlikely that every system will be exactly like Entoto, it's a good example of what you can expect from an HPC system.
 To connect to our example computer, we will use SSH (if you are using PuTTY, see above for instructions). 
 
 SSH allows us to connect to Linux computers remotely, and use them as if they were our own.
@@ -115,12 +115,12 @@ ssh yourUsername@10.4.17.30
 Your Instructor will give you the correct username to use in place of "yourUsername".
 
 ```{.output}
-The authenticity of host 'login.cirrus.ac.uk (129.215.175.28)' can't be established.
+The authenticity of host 'Ntoto (10.4.17.30)' can't be established.
 ECDSA key fingerprint is SHA256:JRj286Pkqh6aeO5zx1QUkS8un5fpcapmezusceSGhok.
 ECDSA key fingerprint is MD5:99:59:db:b1:3f:18:d0:2c:49:4e:c2:74:86:ac:f7:c6.
 Are you sure you want to continue connecting (yes/no)? # type "yes"!
 Warning: Permanently added the ECDSA host key for IP address '129.215.175.28' to the list of known hosts.
-yourUsername@login.cirrus.ac.uk password:  # no text appears as you enter your password
+yourUsername@10.4.17.30 password:  # no text appears as you enter your password
 Last login: Mon Jun 18 16:21:52 2018 from cpc102380-sgyl38-2-0-cust601.18-2.cable.virginm.net
 ================================================================================
 
@@ -174,7 +174,7 @@ the following convention:
 
 ## Examining the nodes
 
-Now we can log into the Cirrus HPC system we will look at the nodes. You should remember that there 
+Now we can log into the Entoto HPC system we will look at the nodes. You should remember that there 
 are at least two  types of node on the system: *login nodes* and *compute nodes*.
 
 We can use the `lscpu` command to print information on the processors on the login nodes to the terminal:
