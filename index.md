@@ -38,7 +38,4 @@ We are committed to making this workshop accessible to everybody. The workshop o
 Materials will be provided in advance of the workshop and large-print handouts are available if needed by notifying the organizers in advance. If we can help making learning easier for you (e.g. sign-language interpreters, lactation facilities) please get in touch and we will attempt to provide them.
 
 
-### Discussion
-
-* Course Etherpad: https://pad.carpentries.org/hpc
 
