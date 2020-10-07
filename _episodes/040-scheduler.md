@@ -52,7 +52,8 @@ In this case, the job we want to run is just a shell script. Let's create a demo
 >
 >```
 >#!/bin/bash
->
+>#SBATCH --partition=all
+>#SBATCH --job-name=O2_calc
 > echo 'This script is running on:'
 > hostname
 > sleep 120
@@ -62,15 +63,15 @@ In this case, the job we want to run is just a shell script. Let's create a demo
 If you completed the previous challenge successfully, 
 you probably realize that there is a distinction between 
 running the job through the scheduler and just "running it".
-To submit this job to the scheduler, we use the ``qsub`` command
+To submit this job to the scheduler, we use the ``sbatch`` command
 (assuming our script is called *example-job.sh*):
 
 ``` 
-[remote]$ qsub -q <ResID> -A y15 example-job.sh
+[mesfind@mgmt01 ~]$ sbatch example-job.sh
 ```
 {: .bash}
 ```
-318747.indy2-login0
+Submitted batch job 606
 ```
 {: .output}
 
@@ -84,30 +85,25 @@ to run, it goes into a list of jobs called the *queue*.
 To check on our job's status, we check the queue using the command ``qstat``.
 
 ```
-[remote]$ squeue -u -u yourUsername
+[mesfind@mgmt01 ~]$ squeue -u yourUsername
 ```
 {: .bash}
 ```
-
-indy2-login0: 
-                                                            Req'd  Req'd   Elap
-Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
---------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
-319011.indy2-lo user     workq    example-jo  21884   1   1    --  96:00 R 00:00
+JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+               606     debug  qml_job  mesfind  R      11:34      1 compute2
 ```
 {: .output}
 
 We can see all the details of our job, most importantly that it is in the "R" (Running) state.
 Sometimes our jobs might need to wait in a queue, "Q" (Queued) state or have an error.
-The best way to check our job's status is with ``qstat``.
-Of course, running ``qstat`` repeatedly to check on things can be a little tiresome.
+The best way to check our job's status is with ``seff``.
 To see a real-time view of our jobs, we can use the ``watch`` command.
 ``watch`` reruns a given command at 2-second intervals. 
 Let's try using it to monitor another job.
 
 ```
-[remote]$ qsub -q <ResID> -A y15 example-job.sh
-[remote]$ watch qstat -u yourUsername
+[mesfind@mgmt01 ~]$ sbatch example-job.sh
+[mesfind@mgmt01 ~]$ watch seff 606 
 ```
 {: .bash}
 
@@ -121,7 +117,7 @@ You may be wondering where the output from your job goes. When you type the `hos
 at the terminal the output comes straight back to you, but a job cannot do this as you may not 
 even be logged in when the job runs.
 
-By default, each PBS job creates two files based on the job script name; one with `.o` and the
+By default, each SLURM job creates two files based on the job script name; one with `.o` and the
 job ID appended and one with `.e` and the job ID appended. For the job we submitted above, with
 the script called `example-job.sh` and the job ID `319011`, PBS will create the files:
 
@@ -155,14 +151,14 @@ specifies what program should be used to run it (typically `/bin/bash`).
 Schedulers like PBS Pro also have a special comment used to denote special 
 scheduler-specific options,
 though these comments differ from scheduler to scheduler.
-PBS Pro's special comment is `#PBS`.
-Anything following the `#PBS` comment is interpreted as an instruction to the scheduler.
+PBS Pro's special comment is `#SBATCH`.
+Anything following the `#SBATCH` comment is interpreted as an instruction to the scheduler.
 
 Let's illustrate this by example. 
 By default, a job's name is the name of the script,
 but the `-N` option can be used to change the name of a job.
 
-Submit the following job (`qsub -q <ResID> -A y15 example-job.sh`):
+Submit the following job (`sbatch example-job.sh`):
 
 ```
 #!/bin/bash
@@ -174,15 +170,12 @@ sleep 120
 ```
 
 ```
-[remote]$ squeqe -u yourUsername
+[mesfind@mgmt01 ~]$ squeqe -u yourUsername
 ```
 {: .bash}
 ```
-indy2-login0: 
-                                                            Req'd  Req'd   Elap
-Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
---------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
-319011.indy2-lo user     workq    new_name   21884   1   1    --  96:00 R 00:00
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+               606     debug  qml_job  mesfind  R      27:32      1 compute
 ```
 {: .output}
 
@@ -192,15 +185,15 @@ One consequence of changing the name of the job is to change the name of the `.o
 and `.e` files produced by PBS. Now they are the job name appended by `.o`/`.e` and
 the job ID rather than the script name. In this case they will be:
 
-- new_name.o319011
-- new_name.e319011
+- new_name.o606
+- new_name.e606
 
 > ## Setting up email notifications
 > 
 > Jobs on an HPC system might run for days or even weeks.
 > We probably have better things to do than constantly check on the status of our job
 > with `qstat`.
-> Looking at the documentation for `qsub` (use `man qsub`, `Space` to scroll down,
+> Looking at the documentation for `sbatch` (use `man sbatch`, `Space` to scroll down,
 > `u` to scroll up, `q` to exit)
 > can you set up our test job to send you an email when it finishes?
 > 
@@ -217,7 +210,7 @@ If you do not specify requirements (such as the amount of time you need),
 you will likely be stuck with your site's default resources,
 which is probably not what we want.
 
-The following PBS options show how to control resource requests:
+The following SLURM options show how to control resource requests:
 
 - `-l select=<nnodes>:ncpus=<cores per node>` - how many nodes and cores per node does your job need? 
 - `-l walltime=<hours:minutes:seconds>` - How much real-world time (walltime) will your job take to run?
@@ -235,22 +228,22 @@ episode of this lesson.
 
 > ## Job environment variables (compute nodes)
 >
-> When PBS runs a job, it sets a number of environment variables for the job.
+> When SLURM runs a job, it sets a number of environment variables for the job.
 > One of these will let us check which compute nodes have been assigned to our job.
-> The `PBS_HOSTFILE` variable is set to the name of the file containing the list of
+> The `SBATCH_HOSTFILE` variable is set to the name of the file containing the list of
 > compute nodes assigned to our job.
-> Using the `PBS_HOSTFILE` variable, 
+> Using the `SBATCH_HOSTFILE` variable, 
 > modify your job so that it prints the list of compute nodes assigned to our job.
 {: .challenge}
 
 > ## Job environment variables (directory)
 >
-> A key job enviroment variable in PBS is `PBS_O_WORKDIR` that contains the path of
+> A key job enviroment variable in PBS is `SBATCH_O_WORKDIR` that contains the path of
 > the directory from which the job was submitted. To understand why this is important
 > modify your job submission script to print out the directory that it runs in by 
 > default by using the `pwd` command (this prints the current working directory).
 >
-> Now, use the `PBS_O_WORKDIR` environment within your job script to make sure that 
+> Now, use the `SBATCH_O_WORKDIR` environment within your job script to make sure that 
 > the commands you are using run in the directory that you submitted the job from
 > and verify that this has worked using `pwd` again.
 {: .challenge}
@@ -267,8 +260,8 @@ and attempt to run a job for two minutes.
 
 ```
 #!/bin/bash
-#PBS -N timeout
-#PBS -l walltime=0:0:30
+#SBATCH -N timeout
+#SBATCH -l walltime=0:0:30
 
 echo 'This script is running on:'
 hostname
@@ -278,13 +271,13 @@ sleep 120
 Submit the job and wait for it to finish. 
 Once it is has finished, check the `.e` (stderr) file.
 ```
-[remote]$ qsub -q <ResID> -A y15 timeout.sh
-[remote]$ watch qstat -u yourUsername
-[remote]$ cat timeout.e319076 
+[remote]$ sbatch timeout.sh
+[remote]$ watch sstat -u yourUsername
+[remote]$ cat timeout.e606 
 ```
 {: .bash}
 ```
-=>> PBS: job killed: walltime 49 exceeded limit 30
+=>> SBATCH: job killed: walltime 49 exceeded limit 30
 ```
 {: .output}
 
@@ -306,18 +299,13 @@ This can be done with the `qdel` command.
 Let's submit a job and then cancel it using its job number.
 
 ```
-[remote]$ qsub -q <ResID> -A y15 example-job.sh
-[remote]$ qstat -u yourUsername
+[remote]$ sbatch  example-job.sh
+[remote]$ sstat -u yourUsername
 ```
 {: .bash}
 ```
-319078.indy2-login0
-
-indy2-login0: 
-                                                            Req'd  Req'd   Elap
-Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
---------------- -------- -------- ---------- ------ --- --- ------ ----- - -----
-319078.indy2-lo user     workq    example-jo   3567   1   1    --  96:00 R 00:00
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+               606     debug  qml_job  mesfind  R      27:32      1 compute2
 ```
 {: .output}
 
@@ -325,8 +313,8 @@ Now cancel the job with it's job number.
 Absence of any job info indicates that the job has been successfully canceled.
 
 ```
-[remote]$ qdel 319078
-[remote]$ qstat -u yourUsername
+[remote]$ scancel 319078
+[remote]$ sstat -u yourUsername
 ```
 {: .bash}
 ```
@@ -343,21 +331,20 @@ There are very frequently tasks that need to be done semi-interactively.
 Creating an entire job script might be overkill, 
 but the amount of resources required is too much for a login node to handle.
 A good example of this might be building a genome index for alignment with a tool like [HISAT2](https://ccb.jhu.edu/software/hisat2/index.shtml).
-Fortunately, we can run these types of tasks as a one-off with `qsub --`.
+Fortunately, we can run these types of tasks as a one-off with `sbatc --`.
 
-`qsub --` runs a single command on the compute nodes and then exits.
-Let's demonstrate this by running the `hostname` command with `qsub --`.
-(We can delete a `qsub --` job using `qdel` as described above.)
+`sbatc --` runs a single command on the compute nodes and then exits.
+Let's demonstrate this by running the `hostname` command with `sbatc --`.
+(We can delete a `sbatch --` job using `scancel` as described above.)
 
 ```
-[remote]$ qsub -q <ResID> -A y15 -- /bin/hostname
+[remote]$ sbatch  -- /bin/hostname
 [remote]$ cat STDIN.o319085
 ```
 {: .bash}
 ```
-319085.indy2-login0
 
-r1i3n0
+mgmt01
 ```
 {: .output}
 
@@ -376,14 +363,14 @@ command:
 ```
 {: .output}
 
-`qsub --` accepts all of the same options as `qsub`.
+`sbatch --` accepts all of the same options as `sbatch`.
 However, instead of specifying these in a script, 
 these options are specified on the command-line when starting a job.
 To submit a job that uses 2 nodes (36 cores per node) for instance, 
 we could use the following command
 
 ```
-[remote]$ qsub -l select=2:ncpus=36 -l place=scatter:excl -q <ResID> -A y15 -- /bin/echo "This job will use 2 nodes."
+[remote]$ sbatch -l select=2:ncpus=36 -l place=scatter:excl  -- /bin/echo "This job will use 2 nodes."
 ```
 {: .bash}
 ```
@@ -396,10 +383,10 @@ This job will use 2 nodes.
 Sometimes, you will need a lot of resource for interactive use.
 Perhaps it's our first time running an analysis 
 or we are attempting to debug something that went wrong with a previous job.
-Fortunately, we can start an interactive job with `qsub`:
+Fortunately, we can start an interactive job with `sbatch`:
 
 ```
-[remote]$ qrun -I -q <ResID> -A y15
+[remote]$ srun -I 
 ```
 {: .bash}
 ```
