@@ -85,7 +85,7 @@ Or perhaps we're simply not sure which files we want to tranfer yet.
 Let's connect to a remote system using `sftp`, you'll notice it works the same way as SSH:
 
 ```
-[mesfind@mgmt01 ~]$ sftp yourUsername@10.4.17.30
+[mesfind@mgmt01 ~]$ sftp yourUsername@hpc.ethernet.edu.et
 ```
 {: .bash}
 
@@ -131,7 +131,7 @@ sftp> pwd
 ```
 {: .bash}
 ```
-Remote working directory: /lustre/home/y15/yourUsername
+Remote working directory: /home/yourUsername
 ```
 {: .output}
 
