@@ -187,32 +187,34 @@ We can use the `lscpu` command to print information on the processors on the log
 Architecture:          x86_64
 CPU op-mode(s):        32-bit, 64-bit
 Byte Order:            Little Endian
-CPU(s):                72
-On-line CPU(s) list:   0-71
-Thread(s) per core:    2
-Core(s) per socket:    18
+CPU(s):                16
+On-line CPU(s) list:   0-15
+Thread(s) per core:    1
+Core(s) per socket:    8
 Socket(s):             2
 NUMA node(s):          2
 Vendor ID:             GenuineIntel
 CPU family:            6
 Model:                 79
-Model name:            Intel(R) Xeon(R) CPU E5-2695 v4 @ 2.10GHz
+Model name:            Intel(R) Xeon(R) CPU E5-2620 v4 @ 2.10GHz
 Stepping:              1
-CPU MHz:               1199.953
-BogoMIPS:              4205.47
+CPU MHz:               2100.000
+CPU max MHz:           2100.0000
+CPU min MHz:           1200.0000
+BogoMIPS:              4190.22
 Virtualization:        VT-x
 L1d cache:             32K
 L1i cache:             32K
 L2 cache:              256K
-L3 cache:              46080K
-NUMA node0 CPU(s):     0-17,36-53
-NUMA node1 CPU(s):     18-35,54-71
+L3 cache:              20480K
+NUMA node0 CPU(s):     0-7
+NUMA node1 CPU(s):     8-15
 ```
 {: .output}
 
 We can get some useful information from this output:
 
-* The processor model is:  Intel(R) Xeon(R) CPU E5-2695 v4 @ 2.10GHz (you could use [Intel Ark](http://ark.intel.com) along with the model number to get more information if you wanted)
+* The processor model is:   Intel(R) Xeon(R) CPU E5-2620 v4 @ 2.10GHz (you could use [Intel Ark](http://ark.intel.com) along with the model number to get more information if you wanted)
 * There are 18 cores per processor: ``Core(s) per socket: 18``
 * There are two processors per node: ``Sockets: 2``
 * This means that there are 2 * 18 = 36 cores on the node
@@ -225,11 +227,11 @@ us the total amount of memory available so we use the ``head -1`` command:
 ```
 {: .bash}
 ```
-MemTotal:       263772152 kB
+MemTotal:       131456088 kB
 ```
 {: .output}
 
-This tells us that there are approximately 252 GB of memory available (263772152/[1024*1024] = 251.55 GB) (this is out of 256 GB, ~4GB are reserved for various parts of computing hardware).
+This tells us that there are approximately 125 GB of memory available (131456088/[1024*1024] = 125.37 GB) (this is out of 125 GB, ~4GB are reserved for various parts of computing hardware).
 
 > ## Units
 > 
@@ -254,14 +256,12 @@ We are going to repeat the commands above on a compute node. To do this, we will
 us access to a bash command line on a compute node. The ``qrun`` command is used to submit a job to the scheduler. Start a best-effort interactive job (can be interrupted by regular jobs if other users submit them):
 
 ```
-[remote]$ srun -p interactive --qos qos-besteffort --pty bash -i
+[remote]$ srun -p interactive --partition=debug --nodelist=compute16 --pty bash -i
 ```
 {: .bash}
 ```
-qrun: waiting for job 316267.indy2-login0 to start
-qrun: job 316267.indy2-login0 ready
 
-[mesfind@mgmt01 ~]$
+[mesfind@compute16 ~]$ 
 ```
 {: .output}
 
