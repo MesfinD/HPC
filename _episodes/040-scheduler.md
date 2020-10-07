@@ -84,7 +84,7 @@ to run, it goes into a list of jobs called the *queue*.
 To check on our job's status, we check the queue using the command ``qstat``.
 
 ```
-[remote]$ qstat -u yourUsername
+[remote]$ squeue -u -u yourUsername
 ```
 {: .bash}
 ```
@@ -166,7 +166,7 @@ Submit the following job (`qsub -q <ResID> -A y15 example-job.sh`):
 
 ```
 #!/bin/bash
-#PBS -N new_name
+#SBATCH -N new_name
 
 echo 'This script is running on:'
 hostname
@@ -174,7 +174,7 @@ sleep 120
 ```
 
 ```
-[remote]$ qstat -u yourUsername
+[remote]$ squeqe -u yourUsername
 ```
 {: .bash}
 ```
@@ -399,7 +399,7 @@ or we are attempting to debug something that went wrong with a previous job.
 Fortunately, we can start an interactive job with `qsub`:
 
 ```
-[remote]$ qsub -I -q <ResID> -A y15
+[remote]$ qrun -I -q <ResID> -A y15
 ```
 {: .bash}
 ```
@@ -425,20 +425,21 @@ When you are done with the interactive job, type `exit` to quit your session.
 ```
 scontrol show partition
 ```
-
+{: .bash}
 * Display the accounts created:
 ```
 sacctmgr show account
 sacctmgr show account -s   # Show also associations in the accounts
 ```
+{: .bash}
 * List users by:
 
 ```
 sacctmgr show user
 sacctmgr show user -s
 ```
+{: .bash}
 * Display all Association records by:
-
 ```
 sacctmgr show associations
 ```
