@@ -25,7 +25,7 @@ the easiest tool to use is `wget`.
 The syntax is relatively straightforward: `wget https://some/link/to/a/file.tar.gz`
 
 ```
-[remote]$ wget https://mesfind.github.io/hpc/files/cfd.tar.gz
+[mesfind@mgmt01 ~]$ wget https://mesfind.github.io/hpc/files/cfd.tar.gz
 ```
 {: .bash}
 ```
@@ -51,13 +51,13 @@ but we'll break it down here:
 
 To transfer *to* another computer:
 ```
-[local]$ scp /path/to/local/file.txt yourUsername@remote.computer.address:/path/on/remote/computer
+[mesfind@mgmt01 ~]$ scp /path/to/local/file.txt yourUsername@remote.computer.address:/path/on/remote/computer
 ```
 {: .bash}
 
 To download *from* another computer:
 ```
-[local]$ scp yourUsername@remote.computer.address:/path/on/remote/computer/file.txt /path/to/local/copy
+[mesfind@mgmt01 ~]$ scp yourUsername@remote.computer.address:/path/on/remote/computer/file.txt /path/to/local/copy
 ```
 {: .bash}
 
@@ -66,14 +66,14 @@ On the remote computer, everything after the `:` is relative to our home directo
 We can simply just add a `:` and leave it at that if we don't care where the file goes.
 
 ```
-[local]$ scp local-file.txt yourUsername@remote.computer.address:
+[mesfind@mgmt01 ~]$ scp local-file.txt yourUsername@remote.computer.address:
 ```
 {: .bash}
 
 To recursively copy a directory, we just add the `-r` (recursive) flag:
 
 ```
-[local]$ scp -r some-local-folder/ yourUsername@remote.computer.address:target-directory/
+[mesfind@mgmt01 ~]$ scp -r some-local-folder/ yourUsername@remote.computer.address:target-directory/
 ```
 {: .bash}
 
@@ -85,7 +85,7 @@ Or perhaps we're simply not sure which files we want to tranfer yet.
 Let's connect to a remote system using `sftp`, you'll notice it works the same way as SSH:
 
 ```
-[local]$ sftp yourUsername@10.4.17.30
+[mesfind@mgmt01 ~]$ sftp yourUsername@10.4.17.30
 ```
 {: .bash}
 
@@ -238,7 +238,7 @@ When you connect to the cluster, your cluster files will appear on the right han
 To connect to the cluster, 
 we'll just need to enter our credentials at the top of the screen:
 
-* Host: `sftp://10.4.17.30
+* Host: `sftp://hpc.ethernet.edu.et
 * User: Your username
 * Password: Your password
 * Port: (leave blank to use the default port)
