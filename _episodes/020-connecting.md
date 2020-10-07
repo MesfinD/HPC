@@ -99,7 +99,7 @@ For those logging in with PuTTY it would likely be best to cover the terminal ba
 
 With all of this in mind, let's connect to a cluster. 
 
-For this lesson, we will use [Entoto]() - an HPC system located at [Department of Chemistry](http://www.aau.edu.et).
+For this lesson, we will use [Ethernet]() - an HPC system located at [Ethernet](http://www.hpc.ethernet.edu.et).
 Although it's unlikely that every system will be exactly like Entoto, it's a good example of what you can expect from an HPC system.
 To connect to our example computer, we will use SSH (if you are using PuTTY, see above for instructions). 
 
@@ -108,19 +108,19 @@ The general syntax of the connection command follows the format `ssh yourUsernam
 Let's attempt to connect to the HPC system now:
 
 ```
-ssh yourUsername@10.4.17.30
+ssh yourUsername@hpc.ethernet.edu.et
 ```
 {: .bash}
 
 Your Instructor will give you the correct username to use in place of "yourUsername".
 
 ```{.output}
-The authenticity of host 'Ntoto (10.4.17.30)' can't be established.
+The authenticity of host '[mgmt01 ~](hpc.ethernet.edu.et)' can't be established.
 ECDSA key fingerprint is SHA256:JRj286Pkqh6aeO5zx1QUkS8un5fpcapmezusceSGhok.
 ECDSA key fingerprint is MD5:99:59:db:b1:3f:18:d0:2c:49:4e:c2:74:86:ac:f7:c6.
 Are you sure you want to continue connecting (yes/no)? # type "yes"!
 Warning: Permanently added the ECDSA host key for IP address '129.215.175.28' to the list of known hosts.
-yourUsername@10.4.17.30 password:  # no text appears as you enter your password
+yourUsername@hpc.ethernet.edu.et password:  # no text appears as you enter your password
 Last login: Mon Jun 18 16:21:52 2018 from cpc102380-sgyl38-2-0-cust601.18-2.cable.virginm.net
 ================================================================================
 
@@ -136,7 +136,7 @@ in this case `[yourUsername@computerName workingDirectory]$`.
 We will cover things in depth as we explore the system further.)
 
 ```{.output}
-[yourUsername@Ntoto ~]$
+[yourUsername@mgmt01 ~]$
 ```
 
 ## Telling the Difference between the Local Terminal and the Remote Terminal
@@ -251,18 +251,17 @@ the scheduler to submit jobs later, but for now, we will use it to tell us more 
 the compute nodes and what is available.  
 
 We are going to repeat the commands above on a compute node. To do this, we will run an *interactive job* which will give
-us access to a bash command line on a compute node. The ``qsub`` command is used to submit a job to the scheduler. Your
-instructor will tell you what to use for `<ResID>` (the reservation ID) as this will be different at each workshop:
+us access to a bash command line on a compute node. The ``qrun`` command is used to submit a job to the scheduler. Start a best-effort interactive job (can be interrupted by regular jobs if other users submit them):
 
 ```
-[remote]$ qsub -q <ResID> -I -l select=1 -A y15
+[remote]$ srun -p interactive --qos qos-besteffort --pty bash -i
 ```
 {: .bash}
 ```
-qsub: waiting for job 316267.indy2-login0 to start
-qsub: job 316267.indy2-login0 ready
+qrun: waiting for job 316267.indy2-login0 to start
+qrun: job 316267.indy2-login0 ready
 
-[compute]$
+[mesfind@mgmt01 ~]$
 ```
 {: .output}
 
