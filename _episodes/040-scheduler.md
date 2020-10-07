@@ -417,3 +417,35 @@ You can also verify this with `hostname`.
 
 When you are done with the interactive job, type `exit` to quit your session.
 
+
+## User Status on Slurm
+
+* scontrol show partition
+
+```
+scontrol show partition
+```
+
+* Display the accounts created:
+```
+sacctmgr show account
+sacctmgr show account -s   # Show also associations in the accounts
+```
+* List users by:
+
+```
+sacctmgr show user
+sacctmgr show user -s
+```
+* Display all Association records by:
+
+```
+sacctmgr show associations
+```
+
+
+
+
+
+
+
