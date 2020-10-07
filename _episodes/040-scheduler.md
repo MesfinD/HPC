@@ -420,19 +420,20 @@ When you are done with the interactive job, type `exit` to quit your session.
 
 ## User Status on Slurm
 
-* scontrol show partition
+{: .bash}
+scontrol show partition
 
 ```
 scontrol show partition
 ```
 {: .bash}
-* Display the accounts created:
+Display the accounts created:
 ```
 sacctmgr show account
 sacctmgr show account -s   # Show also associations in the accounts
 ```
 {: .bash}
-* List users by:
+List users by:
 
 ```
 sacctmgr show user
