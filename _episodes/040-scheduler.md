@@ -424,25 +424,25 @@ When you are done with the interactive job, type `exit` to quit your session.
 scontrol show partition
 
 ```
-scontrol show partition
+$ scontrol show partition
 ```
 {: .bash}
 Display the accounts created:
 ```
-sacctmgr show account
-sacctmgr show account -s   # Show also associations in the accounts
+$ sacctmgr show account
+$ sacctmgr show account -s   # Show also associations in the accounts
 ```
 {: .bash}
 List users by:
 
 ```
-sacctmgr show user
-sacctmgr show user -s
+$ sacctmgr show user
+$ sacctmgr show user -s
 ```
 {: .bash}
 * Display all Association records by:
 ```
-sacctmgr show associations
+$ sacctmgr show associations
 ```
 
 
