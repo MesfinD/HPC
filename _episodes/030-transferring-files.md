@@ -25,16 +25,16 @@ the easiest tool to use is `wget`.
 The syntax is relatively straightforward: `wget https://some/link/to/a/file.tar.gz`
 
 ```
-[mesfind@mgmt01 ~]$ wget https://mesfind.github.io/hpc/files/cfd.tar.gz
+[mesfind@mgmt01 ~]$ wget https://raw.githubusercontent.com/mesfind/datasets/master/weatherdata.zip
 ```
 {: .bash}
 ```
---2018-07-17 11:44:44--  https://epcced.github.io/hpc-intro/files/cfd.tar.gz
-Resolving epcced.github.io (epcced.github.io)... 185.199.110.153, 185.199.111.153, 185.199.109.153, ...
-Connecting to epcced.github.io (epcced.github.io)|185.199.110.153|:443... connected.
+--2018-07-17 11:44:44--  https://raw.githubusercontent.com/mesfind/datasets/master/weatherdata.zip
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)...... 185.199.110.153, 185.199.111.153, 185.199.109.153, ...
+Connecting to Resolving raw.githubusercontent.com (raw.githubusercontent.com)...|185.199.110.153|:443... connected.
 HTTP request sent, awaiting response... 200 OK
-Length: 20480 (20K) [application/gzip]
-Saving to: ‘cfd.tar.gz’
+Length: 20480 (20K) [application/zip]
+Saving to: ‘weatherdata.zip’
 
 100%[===========================================================================================================>] 20,480      --.-K/s   in 0.01s   
 
