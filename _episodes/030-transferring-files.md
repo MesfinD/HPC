@@ -131,7 +131,7 @@ sftp> pwd
 ```
 {: .bash}
 ```
-Remote working directory: /home/yourUsername
+Remote working directory: /home/yourUsername/GPAW
 ```
 {: .output}
 
@@ -158,7 +158,7 @@ sftp> put input.dat
 ```
 {: .bash}
 ```
-Uploading input.dat to /lustre/home/y15/yourUsername/input.dat
+Uploading input.dat to /home/yourUsername/GPAW/input.dat
 input.dat                                   100% 2000KB  11.0MB/s   00:00
 ```
 {: .output}
@@ -170,8 +170,8 @@ sftp> get input.dat
 ```
 {: .bash}
 ```
-Fetching /lustre/home/y15/yourUsername/input.dat to input.dat
-/lustre/home/y15/yourUsername/input.dat                               100% 2000KB  11.0MB/s   00:00
+Fetching /home/yourUsername/input.dat to input.dat
+/home/yourUsername/GPAW/input.dat                               100% 2000KB  11.0MB/s   00:00
 ```
 {: .output}
 
@@ -184,7 +184,7 @@ sftp> put -r data/
 ```
 {: .bash}
 ```
-Uploading content/ to /lustre/home/y15/yourUsername/data
+Uploading content/ to /home/yourUsername/GPAW/data
 Entering content/
 ntering data/
 data/data11.dat                                 100%  100KB   8.4MB/s   00:00    
