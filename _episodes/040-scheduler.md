@@ -410,34 +410,87 @@ When you are done with the interactive job, type `exit` to quit your session.
 
 scontrol show partition
 
-{: .bash}
+
 ```
 $ scontrol show partition
 ```
+{: .bash}
+
+```
+PartitionName=debug
+   AllowGroups=ALL AllowAccounts=ALL AllowQos=ALL
+   AllocNodes=ALL Default=YES QoS=N/A
+   DefaultTime=NONE DisableRootJobs=NO ExclusiveUser=NO GraceTime=0 Hidden=NO
+   MaxNodes=UNLIMITED MaxTime=UNLIMITED MinNodes=0 LLN=NO MaxCPUsPerNode=UNLIMITED
+   Nodes=compute1,compute2,compute3,compute4,compute5,compute6,compute7,compute8,compute9,compute10,compute11,compute12,compute13,compute14,compute15,compute16
+   PriorityJobFactor=1 PriorityTier=1 RootOnly=NO ReqResv=NO OverSubscribe=NO
+   OverTimeLimit=NONE PreemptMode=OFF
+   State=UP TotalCPUs=640 TotalNodes=16 SelectTypeParameters=NONE
+   JobDefaults=(null)
+   DefMemPerNode=UNLIMITED MaxMemPerNode=UNLIMITED
+```
+{: .output}
+
 Display the accounts created:
 
-{: .bash}
+
 ```
 $ sacctmgr show account
 $ sacctmgr show account -s   # Show also associations in the accounts
 ```
+{: .bash}
+
+```
+   abaineh              abaineh              abaineh 
+    abebaw               abebaw               abebaw 
+ abebayehu            abebayehu            abebayehu 
+     abebe                abebe                abebe 
+```
+{: .output}
+
+
 
 List users by:
 
-{: .bash}
 ```
 $ sacctmgr show user
 $ sacctmgr show user -s
 ```
+{: .bash}
+
+```
+ User   Def Acct     Admin    Cluster    Account  Partition     Share MaxJobs MaxNodes  MaxCPUs MaxSubmit     MaxWall  MaxCPUMins                  QOS   Def QOS 
+---------- ---------- --------- ---------- ---------- ---------- --------- ------- -------- -------- --------- ----------- ----------- -------------------- --------- 
+   abaineh    abaineh      None      chess    abaineh                    1                                                                       normal   normal 
+```
+{: .output}
 
 Display all Association records by:
 
-{: .bash}
+
 ```
 $ sacctmgr show associations
 ```
+{: .bash}
 
-
+```
+[mesfind@mgmt01 ~]$ sacctmgr show associations
+   Cluster    Account       User  Partition     Share GrpJobs       GrpTRES GrpSubmit     GrpWall   GrpTRESMins MaxJobs       MaxTRES MaxTRESPerNode MaxSubmit     MaxWall   MaxTRESMins                  QOS   Def QOS GrpTRESRunMin 
+---------- ---------- ---------- ---------- --------- ------- ------------- --------- ----------- ------------- ------- ------------- -------------- --------- ----------- ------------- -------------------- --------- ------------- 
+                                                                                                                                             normal                         
+     chess    abaineh                               1                                                                                                                                                  normal                         
+     chess    abaineh    abaineh                    1                                                                                                                                                  normal    normal               
+     chess     abebaw                               1                                                                                                                                                  normal                         
+     chess     abebaw     abebaw                    1                                                                                                                                                  normal                         
+     chess  abebayehu                               1                                                                                                                                                  normal                         
+     chess  abebayehu  abebayehu                    1                                                                                                                                                  normal    normal               
+     chess      abebe                               1                                                                                                                                                  normal                         
+     chess      abebe      abebe                    1                                                                                                                                                  normal    normal               
+     chess     abebe2                               1                                                                                                                                                  normal                         
+     chess     abebe2     abebe2                    1                                                                                                                                                  normal    normal               
+     chess     abebee                               1                                                                                                                                                  normal                         
+```
+{: .output}
 
 
 
