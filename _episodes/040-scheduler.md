@@ -52,8 +52,7 @@ In this case, the job we want to run is just a shell script. Let's create a demo
 >
 >```
 >#!/bin/bash
->#SBATCH --partition=all
->#SBATCH --job-name=O2_calc
+>
 > echo 'This script is running on:'
 > hostname
 > sleep 120
@@ -260,8 +259,9 @@ and attempt to run a job for two minutes.
 
 ```
 #!/bin/bash
-#SBATCH -N timeout
+#SBATCH --job-name=O2_calc
 #SBATCH -l walltime=0:0:30
+#SBATCH --partition=debug
 
 echo 'This script is running on:'
 hostname
