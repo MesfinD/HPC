@@ -22,7 +22,7 @@ This course provides an introduction to High Performance Computing (HPC). After 
 
 ### Location, Time, Dates
 
-* Room: Camputational Lab, [New Building](https://goo.gl/maps/5V8cXDY78Fr), Addis Ababa University
+* Room: Camputational Lab, [New Building](https://goo.gl/maps/6hmxHTSBsT8B8NfU6), Addis Ababa University
 
 ### Requirements
 
