@@ -350,7 +350,7 @@ mgmt01
 
 Note that, unlike when we use it on the interactive command line, we had
 to provide the full path to the command: `/bin/hostname` rather than `hostname`.
-This is because the PBS environment inside this job does not contain the information
+This is because the SLURM environment inside this job does not contain the information
 to find the command. You can find the full path of a command by using the `which` 
 command:
 
@@ -386,14 +386,11 @@ or we are attempting to debug something that went wrong with a previous job.
 Fortunately, we can start an interactive job with `sbatch`:
 
 ```
-[remote]$ srun -I 
+[mesfind@mgmt01 ~]$ srun -p interactive --partition=debug --nodelist=compute16 --pty bash -i
 ```
 {: .bash}
 ```
-qsub: waiting for job 319086.indy2-login0 to start
-qsub: job 319086.indy2-login0 ready
-
-[compute]$ 
+[mesfind@compute16 ~]$ 
 ```
 {: .output}
 
