@@ -497,7 +497,14 @@ $ sacctmgr show associations
 ```
 {: .output}
 
+Display current accounts on the slurm
 
+` $ saccmgr show account`
+{: .bash}
 
+Create user named xxx with a default account(required) yyy:
+
+` $ saccmgr create user name=xxx DefaultAccount=yyy`
+{: .bash}
 
 
