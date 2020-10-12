@@ -471,10 +471,10 @@ $ sacctmgr show associations
 {: .bash}
 
 ```
-[mesfind@mgmt01 ~]$ sacctmgr show associations
    Cluster    Account       User  Partition     Share GrpJobs       GrpTRES GrpSubmit     GrpWall   GrpTRESMins MaxJobs       MaxTRES MaxTRESPerNode MaxSubmit     MaxWall   MaxTRESMins                  QOS   Def QOS GrpTRESRunMin 
 ---------- ---------- ---------- ---------- --------- ------- ------------- --------- ----------- ------------- ------- ------------- -------------- --------- ----------- ------------- -------------------- --------- ------------- 
-                                                                                                                                             normal                         
+     chess       root                               1                                                                                                                                                  normal                         
+     chess       root       root                    1                                                                                                                                                  normal                         
      chess    abaineh                               1                                                                                                                                                  normal                         
      chess    abaineh    abaineh                    1                                                                                                                                                  normal    normal               
      chess     abebaw                               1                                                                                                                                                  normal                         
@@ -486,6 +486,14 @@ $ sacctmgr show associations
      chess     abebe2                               1                                                                                                                                                  normal                         
      chess     abebe2     abebe2                    1                                                                                                                                                  normal    normal               
      chess     abebee                               1                                                                                                                                                  normal                         
+     chess    abraham                               1                                                                                                                                                  normal                         
+     chess    abraham    abraham                    1                                                                                                                                                  normal    normal               
+     chess      abrha                               1                                                                                                                                                  normal                         
+     chess      abrha      abrha                    1                                                                                                                                                  normal                         
+     chess     abrham                               1                                                                                                                                                  normal                         
+     chess     abrham     abrham                    1                                                                                                                                                  normal    normal               
+     chess      adane                               1                                                                                                                                                  normal            
+    
 ```
 {: .output}
 
