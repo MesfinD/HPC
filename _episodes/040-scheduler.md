@@ -500,11 +500,13 @@ $ sacctmgr show associations
 Display current accounts on the slurm
 
 ` $ saccmgr show account`
+
 {: .bash}
 
 Create a hierarchical organization list using
 
-`sacctmgr add account username Descr="username" Org=username
+`sacctmgr add account username Descr="username" Org=username`
+
 {: .bash}
 
 
