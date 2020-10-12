@@ -502,9 +502,16 @@ Display current accounts on the slurm
 ` $ saccmgr show account`
 {: .bash}
 
-Create user named xxx with a default account(required) yyy:
+Create a hierarchical organization list using
 
-` $ saccmgr create user name=xxx DefaultAccount=yyy`
+`sacctmgr add account username Descr="username" Org=username
+{: .bash}
+
+
+
+Create user named username with a default account(required) yyy:
+
+`$ saccmgr add user name=username DefaultAccount=username`
 {: .bash}
 
 
