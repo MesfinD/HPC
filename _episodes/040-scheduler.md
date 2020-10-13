@@ -514,7 +514,10 @@ Create a hierarchical organization list using
 Create user named username with a default account(required) yyy:
 
 `$ saccmgr add user name=username DefaultAccount=username`
+
 {: .bash}
 
 Show the Slurm entity (e.g., accounts) problems:
+
 ` $ saccmgr show problem`
+{: .bash}
