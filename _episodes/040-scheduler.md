@@ -521,3 +521,7 @@ Show the Slurm entity (e.g., accounts) problems:
 
 ` $ saccmgr show problem`
 {: .bash}
+
+You can modify the database items using SQL-like where and set, for example:
+
+` $ sacctmgr modify account where  name=username set cluster=chess `
