@@ -513,13 +513,19 @@ Create a hierarchical organization list using
 
 Create user named username with a default account(required) yyy:
 
-` # saccmgr add user name=username Account=username`
+` # sacctmgr add user name=username Account=username`
 
+{: .bash}
+
+Synchronize the slurm user
+
+`scontrol reconfig`
 {: .bash}
 
 Show the Slurm entity (e.g., accounts) problems:
 
 ` # saccmgr show problem`
+
 {: .bash}
 
 You can modify the database items using SQL-like where and set, for example:
