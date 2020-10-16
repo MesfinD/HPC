@@ -161,7 +161,7 @@ Submit the following job (`sbatch example-job.sh`):
 
 ```
 #!/bin/bash
-#SBATCH -N new_name
+#SBATCH -J qml_job
 
 echo 'This script is running on:'
 hostname
