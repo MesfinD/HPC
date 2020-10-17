@@ -169,7 +169,7 @@ sleep 120
 ```
 
 ```
-[mesfind@mgmt01 ~]$ squeqe -u yourUsername
+[mesfind@mgmt01 ~]$ squeue -u yourUsername
 ```
 {: .bash}
 ```
