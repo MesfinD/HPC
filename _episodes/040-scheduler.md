@@ -528,8 +528,12 @@ Show the Slurm entity (e.g., accounts) problems:
 
 {: .bash}
 
-You can modify the database items using SQL-like where and set, for example:
+We can modify the database items using SQL-like where and set, for example:
 
 ` # sacctmgr modify account where  name=username set cluster=chess `
 
 {: .bash}
+
+We can delete user account from slurm job controller by:
+
+`sacctmgr remove user Username where account=Username/account`
