@@ -388,11 +388,8 @@ Fortunately, we can start an interactive job with `sbatch`:
 ```
 [mesfind@mgmt01 ~]$ srun -p interactive --partition=debug --nodelist=compute16 --pty bash -i
 ```
-{: .bash}
-```
-[mesfind@compute16 ~]$ 
-```
 {: .output}
+
 
 You should be presented with a bash prompt.
 Note that the prompt will likely change to reflect your new location, 
@@ -400,6 +397,42 @@ in this case the compute node we are logged onto.
 You can also verify this with `hostname`.
 
 When you are done with the interactive job, type `exit` to quit your session.
+
+Now let us test gpaw paralle version on the working nodes bu using the corresponding to the given number of processes would be done with gpaw `--dry-run=N` command line option:
+
+{: .bash}
+```
+[mesfind@compute16 ~]$  gpaw python --dry-run=8 script.py
+```
+{: .output}
+
+The output will contain also the “Calculator” RAM Memory estimate per process.
+
+
+In order to run GPAW in parallel, you do one of these two:
+
+{: .bash}
+```
+[mesfind@compute16 ~] $ mpiexec -n <cores> gpaw python script.py
+[mesfind@compute16 ~] $ gpaw -P <cores> python script.py
+[mesfind@compute16 ~] $ mpiexec -n <cores> python3 script.py
+```
+
+
+## Submitting gpaw job
+
+{: .bash}
+```
+
+#!/bin/bash
+#SBATCH -J  myscript
+#SBATCH -N 3 
+#SBATCH --ntasks-per-node 32
+#SBATCH --output  script.slurm.log
+
+mpiexec -n 96 gpaw python script.py
+```
+
 
 
 ## User Status on Slurm
