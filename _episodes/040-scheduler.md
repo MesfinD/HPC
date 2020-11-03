@@ -81,7 +81,7 @@ And that's all we need to do to submit a job.  Our work is done -- now the
 scheduler takes over and tries to run the job for us.  While the job is waiting 
 to run, it goes into a list of jobs called the *queue*.
 
-To check on our job's status, we check the queue using the command ``qstat``.
+To check on our job's status, we check the queue using the command ``sstat``.
 
 ```
 [mesfind@mgmt01 ~]$ squeue -u yourUsername
@@ -191,7 +191,7 @@ the job ID rather than the script name. In this case they will be:
 > 
 > Jobs on an HPC system might run for days or even weeks.
 > We probably have better things to do than constantly check on the status of our job
-> with `qstat`.
+> with `sstat`.
 > Looking at the documentation for `sbatch` (use `man sbatch`, `Space` to scroll down,
 > `u` to scroll up, `q` to exit)
 > can you set up our test job to send you an email when it finishes?
@@ -248,7 +248,7 @@ episode of this lesson.
 {: .challenge}
 
 You almost always want your job scipt to execute as if it was in the directory from
-which the job was submitted so you will generally make sure you use the `PBS_O_WORKDIR`
+which the job was submitted so you will generally make sure you use the `SBATCH_O_WORKDIR`
 environment variable in all your job scripts. If you encounter errors with files or
 executables not being found it is often worth checking that the job script is executing
 in the location you expect!
@@ -259,7 +259,7 @@ and attempt to run a job for two minutes.
 
 ```
 #!/bin/bash
-#SBATCH --job-name=O2_calc
+#SBATCH -J O2_calc
 #SBATCH -l walltime=0:0:30
 #SBATCH --partition=debug
 
@@ -284,9 +284,7 @@ Once it is has finished, check the `.e` (stderr) file.
 Our job was killed for exceeding the amount of resources it requested.
 Although this appears harsh, this is actually a feature.
 Strict adherence to resource requests allows the scheduler to find the best possible place
-for your jobs.
-Even more importantly, 
-it ensures that another user cannot use more resources than they've been given.
+for your jobs. Even more importantly,  it ensures that another user cannot use more resources than they've been given.
 If another user messes up and accidentally attempts to use more time than they have been 
 allocated PBS will kill the job. Other jobs will be unaffected.
 This means that one user cannot mess up the experience of others,
@@ -295,7 +293,7 @@ the only jobs affected by a mistake in scheduling will be their own.
 ## Cancelling/deleting a job
 
 Sometimes we'll make a mistake and need to cancel/delete a job.
-This can be done with the `qdel` command.
+This can be done with the `scancel` command.
 Let's submit a job and then cancel it using its job number.
 
 ```
