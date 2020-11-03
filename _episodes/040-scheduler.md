@@ -419,7 +419,7 @@ In order to run GPAW in parallel, you do one of these two:
 ```
 
 
-## Submitting gpaw job
+## Submitting gpaw job in parallel
 
 {: .bash}
 ```
