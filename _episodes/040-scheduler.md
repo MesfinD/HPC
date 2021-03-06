@@ -433,9 +433,20 @@ mpiexec -n 96 gpaw python script.py
 
 
 
+## Job controller Status on Slurm
+
+To check the status of slurm job control 
+
+```
+# scontrol ping
+```
+If the primary or the backup slurm controll is down, we need to start the slurmctld
+
+```
+# systemctl status slurmctld.service
+```
+
 ## User Status on Slurm
-
-
 scontrol show partition
 
 
