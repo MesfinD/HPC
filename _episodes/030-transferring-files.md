@@ -85,7 +85,7 @@ Or perhaps we're simply not sure which files we want to tranfer yet.
 Let's connect to a remote system using `sftp`, you'll notice it works the same way as SSH:
 
 ```
-[mesfind@mgmt01 ~]$ sftp yourUsername@hpc.ethernet.edu.et
+[mesfind@mgmt01 ~]$ sftp yourUsername@hpcportal.ethernet.edu.et
 ```
 {: .bash}
 
@@ -238,7 +238,7 @@ When you connect to the cluster, your cluster files will appear on the right han
 To connect to the cluster, 
 we'll just need to enter our credentials at the top of the screen:
 
-* Host: `sftp://hpc.ethernet.edu.et
+* Host: `sftp://hpcportal.ethernet.edu.et
 * User: Your username
 * Password: Your password
 * Port: (leave blank to use the default port)
