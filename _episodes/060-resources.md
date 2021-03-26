@@ -101,10 +101,10 @@ or not.
 
 ## Measuring the statistics of currently running tasks
 
-As we saw in the previous episode on the scheduler, you can use the `qstat` command to 
+As we saw in the previous episode on the scheduler, you can use the `sstat` command to 
 monitor how much time and how many nodes are being used by current jobs. To list
-details of your jobs (queued and running), use `qstat -u yourUsernname` and to list the
-details of all jobs in the queue use `qstat -a`.
+details of your jobs (queued and running), use `sstat -u yourUsernname` and to list the
+details of all jobs in the queue use `sstat -a`.
 
 ## Benchmarking
 
