@@ -44,7 +44,7 @@ parallels that will be coming up in the next section of the lesson.
 
 
 
-
+# Only for System Admins
 
 ## Job controller Status on Slurm
 
