@@ -108,14 +108,14 @@ The general syntax of the connection command follows the format `ssh yourUsernam
 Let's attempt to connect to the HPC system now:
 
 ```
-ssh yourUsername@hpc.ethernet.edu.et
+ssh yourUsername@hpcportal.ethernet.edu.et
 ```
 {: .bash}
 
 Your Instructor will give you the correct username to use in place of "yourUsername".
 
 ```{.output}
-The authenticity of host '[mgmt01 ~](hpc.ethernet.edu.et)' can't be established.
+The authenticity of host '[mgmt01 ~](hpcportal.ethernet.edu.et)' can't be established.
 ECDSA key fingerprint is SHA256:JRj286Pkqh6aeO5zx1QUkS8un5fpcapmezusceSGhok.
 ECDSA key fingerprint is MD5:99:59:db:b1:3f:18:d0:2c:49:4e:c2:74:86:ac:f7:c6.
 Are you sure you want to continue connecting (yes/no)? # type "yes"!
