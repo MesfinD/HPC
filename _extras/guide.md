@@ -154,7 +154,7 @@ $ sacctmgr show associations
 
 Display current accounts on the slurm
 
-` $ saccmgr show account`
+` $ sacctmgr show account`
 
 {: .bash}
 
@@ -179,7 +179,7 @@ Synchronize the slurm user
 
 Show the Slurm entity (e.g., accounts) problems:
 
-` # saccmgr show problem`
+` # sacctmgr show problem`
 
 {: .bash}
 
