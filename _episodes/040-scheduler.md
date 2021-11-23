@@ -66,7 +66,7 @@ To submit this job to the scheduler, we use the ``sbatch`` command
 (assuming our script is called *example-job.sh*):
 
 ``` 
-[mesfind@mgmt01 ~]$ sbatch example-job.sh
+[mesfind@mgmt01 ~]$ sbatch job.sh
 ```
 {: .bash}
 ```
@@ -101,7 +101,7 @@ To see a real-time view of our jobs, we can use the ``watch`` command.
 Let's try using it to monitor another job.
 
 ```
-[mesfind@mgmt01 ~]$ sbatch example-job.sh
+[mesfind@mgmt01 ~]$ sbatch job.sh
 [mesfind@mgmt01 ~]$ watch seff 606 
 ```
 {: .bash}
@@ -118,7 +118,7 @@ even be logged in when the job runs.
 
 By default, each SLURM job creates two files based on the job script name; one with `.o` and the
 job ID appended and one with `.e` and the job ID appended. For the job we submitted above, with
-the script called `example-job.sh` and the job ID `319011`, PBS will create the files:
+the script called `job.sh` and the job ID `319011`, PBS will create the files:
 
 - example-job.sh.o319011
 - example-job.sh.e319011
@@ -157,7 +157,7 @@ Let's illustrate this by example.
 By default, a job's name is the name of the script,
 but the `-N` option can be used to change the name of a job.
 
-Submit the following job (`sbatch example-job.sh`):
+Submit the following job (`sbatch job.sh`):
 
 ```
 #!/bin/bash
