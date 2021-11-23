@@ -297,8 +297,8 @@ This can be done with the `scancel` command.
 Let's submit a job and then cancel it using its job number.
 
 ```
-[remote]$ sbatch  example-job.sh
-[remote]$ sstat -u yourUsername
+[remote]$ sbatch  job.sh
+[remote]$ squeue -u yourUsername
 ```
 {: .bash}
 ```
@@ -312,7 +312,7 @@ Absence of any job info indicates that the job has been successfully canceled.
 
 ```
 [remote]$ scancel 319078
-[remote]$ sstat -u yourUsername
+[remote]$ squeue -u yourUsername
 ```
 {: .bash}
 ```
