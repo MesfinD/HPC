@@ -154,13 +154,17 @@ $ sacctmgr show associations
 
 Display current accounts on the slurm
 
-` $ sacctmgr show account`
+```
+$ sacctmgr show account
+```
 
 {: .bash}
 
 Create a hierarchical organization list using
 
-` # sacctmgr add account username Descr="username" Org=username`
+```
+# sacctmgr add account username Descr="username" Org=username
+```
 
 {: .bash}
 
@@ -168,27 +172,33 @@ Create a hierarchical organization list using
 
 Create user named username with a default account(required) yyy:
 
-` # sacctmgr add user name=username Account=username`
+``` 
+# sacctmgr add user name=username Account=username
+```
 
 {: .bash}
 
 Synchronize the slurm user
 
-`scontrol reconfig`
+```
+# scontrol reconfig
+```
 {: .bash}
 
 Show the Slurm entity (e.g., accounts) problems:
 
-` # sacctmgr show problem`
+``` # sacctmgr show problem
+```
 
 {: .bash}
 
 We can modify the database items using SQL-like where and set, for example:
 
-` # sacctmgr modify account where  name=username set cluster=chess `
+``` # sacctmgr modify account where  name=username set cluster=chess 
+```
 
 {: .bash}
 
 We can delete user account from slurm job controller by:
 
-`sacctmgr remove user Username where account=Username/account`
+```sacctmgr remove user Username where account=Username/account```
