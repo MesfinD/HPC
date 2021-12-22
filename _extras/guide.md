@@ -187,14 +187,16 @@ Synchronize the slurm user
 
 Show the Slurm entity (e.g., accounts) problems:
 
-``` # sacctmgr show problem
+``` 
+# sacctmgr show problem
 ```
 
 {: .bash}
 
 We can modify the database items using SQL-like where and set, for example:
 
-``` # sacctmgr modify account where  name=username set cluster=chess 
+``` 
+# sacctmgr modify account where  name=username set cluster=chess 
 ```
 
 {: .bash}
