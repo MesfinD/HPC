@@ -112,7 +112,7 @@ $ sacctmgr show user -s
 
 ```
  User   Def Acct     Admin    Cluster    Account  Partition     Share MaxJobs MaxNodes  MaxCPUs MaxSubmit     MaxWall  MaxCPUMins                  QOS   Def QOS 
----------- ---------- --------- ---------- ---------- ---------- --------- ------- -------- -------- --------- ----------- ----------- -------------------- --------- 
+---------- ---------- --------- ---------- ---------- ---------- --------- ------- -------- -------- --------- ----------- ----------- --------------
    abaineh    abaineh      None      chess    abaineh                    1                                                                       normal   normal 
 ```
 {: .output}
@@ -121,13 +121,13 @@ Display all Association records by:
 
 
 ```
-$ `sacctmgr show associations`
+$ sacctmgr show associations
 ```
 {: .bash}
 
 ```
    Cluster    Account       User  Partition     Share GrpJobs       GrpTRES GrpSubmit     GrpWall   GrpTRESMins MaxJobs       MaxTRES MaxTRESPerNode MaxSubmit     MaxWall   MaxTRESMins                  QOS   Def QOS GrpTRESRunMin 
----------- ---------- ---------- ---------- --------- ------- ------------- --------- ----------- ------------- ------- ------------- -------------- --------- ----------- ------------- -------------------- --------- ------------- 
+---------- ---------- ---------- ---------- --------- ------- ------------- --------- ----------- ------------- ------- ------------- -------------- 
      chess       root                               1                                                                                                                                                  normal                         
      chess       root       root                    1                                                                                                                                                  normal                         
      chess    abaineh                               1                                                                                                                                                  normal                         
@@ -155,7 +155,7 @@ $ `sacctmgr show associations`
 Display current accounts on the slurm
 
 ```
-$ `sacctmgr show account`
+$ sacctmgr show account
 ```
 
 {: .bash}
@@ -163,7 +163,7 @@ $ `sacctmgr show account`
 Create a hierarchical organization list using
 
 ```
-# `sacctmgr add account username Descr="username" Org=username`
+# sacctmgr add account username Descr=username Org=username
 ```
 
 {: .bash}
@@ -173,7 +173,7 @@ Create a hierarchical organization list using
 Create user named username with a default account(required) yyy:
 
 ``` 
-# `sacctmgr add user name=username Account=username`
+# sacctmgr add user name=username Account=username
 ```
 
 {: .bash}
@@ -181,14 +181,14 @@ Create user named username with a default account(required) yyy:
 Synchronize the slurm user
 
 ```
-# `scontrol reconfig`
+# scontrol reconfig
 ```
 {: .bash}
 
 Show the Slurm entity (e.g., accounts) problems:
 
 ``` 
-# `sacctmgr show problem`
+# sacctmgr show problem
 ```
 
 {: .bash}
@@ -196,7 +196,7 @@ Show the Slurm entity (e.g., accounts) problems:
 We can modify the database items using SQL-like where and set, for example:
 
 ``` 
-# `sacctmgr modify account where  name=username set cluster=chess`
+# sacctmgr modify account where  name=username set cluster=chess
 ```
 
 {: .bash}
