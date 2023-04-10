@@ -121,7 +121,7 @@ Display all Association records by:
 
 
 ```
-$ sacctmgr show associations
+$ `sacctmgr show associations`
 ```
 {: .bash}
 
@@ -155,7 +155,7 @@ $ sacctmgr show associations
 Display current accounts on the slurm
 
 ```
-$ sacctmgr show account
+$ `sacctmgr show account`
 ```
 
 {: .bash}
@@ -163,7 +163,7 @@ $ sacctmgr show account
 Create a hierarchical organization list using
 
 ```
-# sacctmgr add account username Descr="username" Org=username
+# `sacctmgr add account username Descr="username" Org=username`
 ```
 
 {: .bash}
@@ -173,7 +173,7 @@ Create a hierarchical organization list using
 Create user named username with a default account(required) yyy:
 
 ``` 
-# sacctmgr add user name=username Account=username
+# `sacctmgr add user name=username Account=username`
 ```
 
 {: .bash}
@@ -181,14 +181,14 @@ Create user named username with a default account(required) yyy:
 Synchronize the slurm user
 
 ```
-# scontrol reconfig
+# `scontrol reconfig`
 ```
 {: .bash}
 
 Show the Slurm entity (e.g., accounts) problems:
 
 ``` 
-# sacctmgr show problem
+# `sacctmgr show problem`
 ```
 
 {: .bash}
@@ -196,7 +196,7 @@ Show the Slurm entity (e.g., accounts) problems:
 We can modify the database items using SQL-like where and set, for example:
 
 ``` 
-# sacctmgr modify account where  name=username set cluster=chess 
+# `sacctmgr modify account where  name=username set cluster=chess`
 ```
 
 {: .bash}
