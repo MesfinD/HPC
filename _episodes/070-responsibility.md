@@ -51,7 +51,7 @@ node and the amount of CPU and memory they are using. The `kill` command can be 
 with the *PID* to terminate any processes that are using large amounts of resource.
 
 ```
-[remote]$ module load anaconda/python2
+[remote]$ module load python/anaconda3
 [remote]$ python cfd.py 100 10000 &
 [remote]$ ps ux
 ```
