@@ -52,7 +52,7 @@ This value is typically two to three times what you think your job will need.
 > Create a job that runs the following commands in the directory containing the `cfd.py` program.
 > 
 > ```
-> module load anaconda/python2
+> module load python/anaconda3
 > python cfd.py 3 20000
 > ```
 > 
@@ -68,9 +68,9 @@ This value is typically two to three times what you think your job will need.
 {: .challenge}
 
 Once the job completes, we can query the scheduler to see how long our job took.
-We will use `qstat -x` to get statistics about our job.
+We will use `sstat -x` to get statistics about our job.
 
-By itself, `qstat -x -u yourUsername` shows all jobs that you have run on the system recently
+By itself, `sstat -x -u yourUsername` shows all jobs that you have run on the system recently
 
 ```
 [remote]$ qstat -x -u yourUsername
