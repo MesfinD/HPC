@@ -253,7 +253,7 @@ the scheduler to submit jobs later, but for now, we will use it to tell us more 
 the compute nodes and what is available.  
 
 We are going to repeat the commands above on a compute node. To do this, we will run an *interactive job* which will give
-us access to a bash command line on a compute node. The ``qrun`` command is used to submit a job to the scheduler. Start a best-effort interactive job (can be interrupted by regular jobs if other users submit them):
+us access to a bash command line on a compute node. The ``srun`` command is used to submit a job to the scheduler. Start a best-effort interactive job (can be interrupted by regular jobs if other users submit them):
 
 ```
 [remote]$ srun -p interactive --partition=debug --nodelist=compute16 --pty bash -i
